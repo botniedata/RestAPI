@@ -10,6 +10,8 @@
 
 - Load and Install Libraries and Packages <br>
 `pip install -r requirements.txt`
+- Add
+`fastapi` `uvicorn`
 
 - Deactivate the enviroment <br>
 `deactivate`
@@ -26,9 +28,5 @@
 - Connect local git to GitHub Repository <br>
 ~
 
-- Set app for running web <br>
-`set FLASK_APP=app.py` <br>
-`set FLASK_ENV=dev`
-
-- Run the app.py <br>
-`flask run`
+- Load the page
+`uvicorn <name of the file>:app --reload`

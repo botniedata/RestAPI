@@ -1,15 +1,14 @@
-from flask import Flask
+from fastapi import FastAPI
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/')
-def index():
-    return product
+items = []
 
-product = [
-    {"productId": "10",
-     "transactionAmount": "1000.0",
-     "transactionDatetime": "2018-10-01 10:10:10"}
-]
+@app.get("/")
+def root():
+    return {"hello": "world!"}
 
-
+@app.post("/items")
+def create_item(item: str):
+    items.append(items)
+    return items
