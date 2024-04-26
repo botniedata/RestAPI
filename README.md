@@ -25,3 +25,10 @@
 
 - Connect local git to GitHub Repository <br>
 ~
+
+- Set app for running web <br>
+`set FLASK_APP=app.py` <br>
+`set FLASK_ENV=dev`
+
+- Run the app.py <br>
+`flask run`
