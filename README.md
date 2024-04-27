@@ -64,8 +64,7 @@ Assignment Environment:
     { “transactionId”: 1,
       “productName”: “P1”, 
       “transactionAmount”: 1000.0, 
-      “transactionDatetime”: 
-      “2018-01-01 10:10:10”
+      “transactionDatetime”: “2018-01-01 10:10:10”
     }
     ```
     * GET request <br>
