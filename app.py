@@ -3,6 +3,7 @@ from typing import Optional
 
 app = FastAPI()
 
+# ProductReference.csv
 products = {
     10: {"productName": "P1", "productManufacturing": "C1"},
     20: {"productName": "P2", "productManufacturing": "C1"},
@@ -10,6 +11,7 @@ products = {
 
 }
 
+# Transaction_20180101101010.csv
 transactions = {
     1: {"productId": 10, "transactionAmount": 1000.0, "transactionDatetime": "2018-10-01 10:10:10"},
     2: {"productId": 10, "transactionAmount": 1000.0, "transactionDatetime": "2018-10-01 10:15:10"},
@@ -21,13 +23,13 @@ transactions = {
 
 
 @app.get("/assignment/transaction/{transaction_id}")
-async def get_transaction_by_id(transaction_id: int = Path(..., description="TransactionId of the transaction to retrieve")):
+async def get_transaction_by_id(transaction_id: int = Path(...)):
     
     transaction = transactions.get(transaction_id)
     if not transaction:
         return {"message": f"Transaction with ID {transaction_id} not found"}
 
-    product_id = transaction.get("productId")  # Use get() with default value
+    product_id = transaction.get("productId")
     if not product_id:
         return {"message": f"Product information for transaction ID {transaction_id} not found"}
 
@@ -42,14 +44,14 @@ async def get_transaction_by_id(transaction_id: int = Path(..., description="Tra
     return result
 
 
-@app.get('assignment/transactionSummaryByProducts/{lastNdays}')
-def read_lastNdaysByProducts(lastNdays: str):
+@app.get('assignment/transactionSummaryByProducts/{last_n_days}')
+async def get_last_n_days_by_products(last_n_days: str):
     # Return Values should be the following
     # productName, totalAmount
     return {"lastNdays": lastNdays}
 
-@app.get('assignment/transactionSummaryByManufacturingCity/{lastNdays}')
-def read_lastNdaysByManufacturingCity(lastNdays: str):
+@app.get('assignment/transactionSummaryByManufacturingCity/{last_n_days}')
+aysnc def get_last_n_days_by_manufacturing_city(last_n_days: str):
     # Return Values should be the following
     # cityName, totalAmount
     return {"lastNdays": lastNdays}
