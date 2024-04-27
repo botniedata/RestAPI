@@ -31,7 +31,7 @@ async def get_transaction_by_id(transaction_id: int = Path(..., description="Tra
     if not product_id:
         return {"message": f"Product information for transaction ID {transaction_id} not found"}
 
-    product_name = products.get(transaction_id, {}).get("productName")
+    product_name = products.get(product_id, {}).get("productName")
 
     result = {
         "transactionId": transaction_id,
